@@ -6,8 +6,7 @@ public class Board extends JFrame {
 
     JPanel upper = new JPanel();
     JPanel lower = new JPanel();
-    JButton play = new JButton("Nytt spel");
-    JButton cheat = new JButton("Fuska");
+
     Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 
     Board() {
@@ -21,8 +20,8 @@ public class Board extends JFrame {
 
         //upper
         add(upper, BorderLayout.NORTH);
-        upper.add(play);
-        upper.add(cheat);
+        upper.add(t.play);
+        upper.add(t.cheat);
         upper.setBackground(Color.ORANGE);
 
         //lower

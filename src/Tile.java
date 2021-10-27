@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Tile {
-    gameLogic logic = new gameLogic();
+
     JButton tiles[] = new JButton[16];
     ArrayList<Integer> numberList = new ArrayList<>();
     Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
@@ -34,10 +34,10 @@ public class Tile {
     MouseAdapter click = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) throws ClassCastException {
-            logic.tileClick(numberList, e);
+            numberList.clear();
             //Logik för knapptryck
             /*
-            gameLogic l = new gameLogic();   //behöver man göra detta??
+            Logic l = new Logic();   //behöver man göra detta??
             l.src=e.getSource();
 
              */

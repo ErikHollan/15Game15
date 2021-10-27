@@ -1,4 +1,5 @@
 import javax.swing.*;
+<<<<<<< HEAD
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,12 +42,49 @@ public class gameLogic {
         }
 
 
+=======
+import java.util.Collections;
+import java.util.List;
+
+public class gameLogic {
+
+
+    public void cheat(JButton[] tiles, List<Integer> numberList) {
+        for (int i = 1; i <= 15; i++) {
+            tiles[15].setText("");
+            numberList.add(i);
+        }
+        for (int i = 0; i < 15; i++) {
+            tiles[i].setText("" + numberList.get(i));
+        }
+    }
+
+    public void play(JButton[] tiles, List<Integer> numberList) {
+
+        for (int i = 1; i <= 15; i++) {
+            tiles[15].setText("");
+            numberList.add(i);
+            Collections.shuffle(numberList);
+        }
+
+        for (int i = 0; i < 15; i++) {
+            tiles[i].setText("" + numberList.get(i));
+        }
+
+    }
+
+    public void move(JButton[] tiles, Object src, int clicked, int empty, String sClicked, String sEmpty) {
+>>>>>>> origin/Logic
         for (int i = 0; i < tiles.length; i++) {
             if (src == tiles[i]) {
                 clicked = i;
             }
 
+<<<<<<< HEAD
             if (squares[i].getText().equals("")) {
+=======
+            if (tiles[i].getText().equals("")) {
+>>>>>>> origin/Logic
                 empty = i;
             }
 
@@ -60,6 +98,10 @@ public class gameLogic {
             tiles[empty].setText(sClicked);
 
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Logic
     }
 }
 
