@@ -34,11 +34,9 @@ public class gameLogic {
             if (src == tiles[i]) {
                 clicked = i;
             }
-
             if (tiles[i].getText().equals("")) {
                 empty = i;
             }
-
         }
         if (clicked + 1 == empty || clicked - 1 == empty ||
                 clicked + 4 == empty || clicked - 4 == empty) {
@@ -47,15 +45,19 @@ public class gameLogic {
 
             tiles[clicked].setText(sEmpty);
             tiles[empty].setText(sClicked);
-
         }
 
     }
 
     //Logik för vinst
 
-    public void Win(){
-        System.out.println("Du vann!");
+    public void win(JButton[] tiles, List<Integer> numberList){
+        for (int i : numberList) {
+            if (tiles[i].equals(numberList.get(i-1))){
+                JOptionPane.showMessageDialog(null, "Grattis, du vann!");  //Fungerar ej
+            }
+            }
+
     }
 }
 
