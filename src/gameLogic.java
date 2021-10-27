@@ -52,12 +52,20 @@ public class gameLogic {
     //Logik för vinst
 
     public void win(JButton[] tiles, List<Integer> numberList){
-        for (int i : numberList) {
-            if (tiles[i].equals(numberList.get(i-1))){
-                JOptionPane.showMessageDialog(null, "Grattis, du vann!");  //Fungerar ej
-            }
+        boolean correct = true;
+        for (int i = 0; i<16; ++i) {
+            System.out.println(tiles[i].getText());
+            if (!tiles[i].getText().equals((i+1)+"")){
+                if(i == 15 && tiles[i].getText().equals("")){
+                    continue;
+                }
+                correct = false;
             }
 
+        }
+        if (correct){
+            JOptionPane.showMessageDialog(null, "Grattis, du vann!");
+        }
     }
 }
 
