@@ -51,5 +51,11 @@ public class gameLogic {
         }
 
     }
+
+    //Logik för vinst
+
+    public void Win(){
+        System.out.println("Du vann!");
+    }
 }
 
