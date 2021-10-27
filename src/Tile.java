@@ -35,7 +35,7 @@ public class Tile {
     MouseAdapter click = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) throws ClassCastException {
-            Logic logic = new Logic();
+            gameLogic gameLogic = new gameLogic();
             numberList.clear();
             Object src = e.getSource();
             int clicked = 0;
@@ -44,13 +44,13 @@ public class Tile {
             String sEmpty = "";
 
             if (src == cheat) {
-                logic.cheat(tiles, numberList);
+                gameLogic.cheat(tiles, numberList);
             }
             if (src == play) {
-                logic.play(tiles, numberList);
+                gameLogic.play(tiles, numberList);
             }
 
-            logic.move(tiles,src, clicked,empty,sClicked,sEmpty);
+            gameLogic.move(tiles,src, clicked,empty,sClicked,sEmpty);
 
         }
 

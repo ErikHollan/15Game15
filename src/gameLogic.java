@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.Collections;
 import java.util.List;
 
-public class Logic {
+public class gameLogic {
 
 
     public void cheat(JButton[] tiles, List<Integer> numberList) {
