@@ -1,8 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Tile {
@@ -12,6 +12,7 @@ public class Tile {
     Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     JButton play = new JButton("Nytt spel");
     JButton cheat = new JButton("Fuska");
+    gameLogic gameLogic = new gameLogic();
 
     public Tile() {
         for (int i = 0; i <= 15; i++) {
@@ -20,22 +21,22 @@ public class Tile {
                 tiles[i] = new JButton("" + numberList.get(i));
                 tiles[i].setBorder(border);
                 tiles[i].setFont(new Font("Serif", Font.PLAIN, 50));
-                tiles[i].addMouseListener(click);
+                tiles[i].addActionListener(click);
             } else {
                 tiles[i] = new JButton("");
                 tiles[i].setBorder(border);
                 tiles[i].setFont(new Font("Serif", Font.PLAIN, 50));
-                tiles[i].addMouseListener(click);
+                tiles[i].addActionListener(click);
             }
-            play.addMouseListener(click);
-            cheat.addMouseListener(click);
         }
+        play.addActionListener(click);
+        cheat.addActionListener(click);
     }
 
-    MouseAdapter click = new MouseAdapter() {
+    ActionListener click = new ActionListener() {
         @Override
-        public void mouseClicked(MouseEvent e) throws ClassCastException {
-            gameLogic gameLogic = new gameLogic();
+        public void actionPerformed(ActionEvent e) {
+
             numberList.clear();
             Object src = e.getSource();
             int clicked = 0;
@@ -51,6 +52,8 @@ public class Tile {
             }
 
             gameLogic.move(tiles,src, clicked,empty,sClicked,sEmpty);
+            gameLogic.checkWin(tiles);
+
         }
     };
 }
