@@ -7,14 +7,16 @@ import java.util.ArrayList;
 
 public class Tile {
 
-    JButton tiles[] = new JButton[16];
+    JButton[] tiles = new JButton[16];
     ArrayList<Integer> numberList = new ArrayList<>();
     Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     JButton play = new JButton("Nytt spel");
     JButton cheat = new JButton("Fuska");
-    gameLogic gameLogic = new gameLogic();
+    gameLogic gameLogic;
 
-    public Tile() {
+
+    public Tile(TimeThread tt) {
+        gameLogic = new gameLogic(tt);
         for (int i = 0; i <= 15; i++) {
             if (i < 15) {
                 numberList.add(i + 1);
@@ -31,6 +33,7 @@ public class Tile {
         }
         play.addActionListener(click);
         cheat.addActionListener(click);
+        JOptionPane.showMessageDialog(null, "Tryck OK för att starta");
     }
 
     ActionListener click = new ActionListener() {

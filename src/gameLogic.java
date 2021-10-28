@@ -4,6 +4,13 @@ import java.util.List;
 
 public class gameLogic {
 
+    Clock time = new Clock();
+    TimeThread timeThread;
+
+    public gameLogic(TimeThread tt){
+        time.timeStart();
+        timeThread = tt;
+    }
 
     public void cheat(JButton[] tiles, List<Integer> numberList) {
         for (int i = 1; i <= 15; i++) {
@@ -26,6 +33,9 @@ public class gameLogic {
         for (int i = 0; i < 15; i++) {
             tiles[i].setText("" + numberList.get(i));
         }
+        time.timeStart();
+        timeThread.prepareClock();
+        timeThread.setPause(false);
     }
 
     public void move(JButton[] tiles, Object src, int clicked, int empty, String sClicked, String sEmpty) {
@@ -58,6 +68,10 @@ public class gameLogic {
                 }
                 correct = false;
             }
+        }
+        if (correct){
+            timeThread.setPause(true);
+            JOptionPane.showMessageDialog(null, "You did it in " + time.elapsedTime() + " seconds.");
         }
     }
 }

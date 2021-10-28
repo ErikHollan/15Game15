@@ -1,20 +1,23 @@
 import java.time.Duration;
 import java.time.Instant;
 
-public class Clock {
+public class Clock{
 
-    public Instant timeStart() {
-        Instant start = Instant.now();
-        return start;
+    Instant start;
+
+    public Clock(){}
+
+    public void timeStart() {
+        this.start = Instant.now();
     }
 
-    public Instant timeEnd(){
-        Instant end = Instant.now();
-        return end;
-    }
-
-    public String elapsedTime(Instant start, Instant end){
-        String elapsed = Duration.between(start, end).toString();
-        return elapsed;
+    public String elapsedTime(){
+        Instant now = Instant.now();
+        if (Duration.between(start, now) == null){
+            return "0";
+        }
+        else {
+            return Long.toString(Duration.between(start, now).toSeconds());
+        }
     }
 }
