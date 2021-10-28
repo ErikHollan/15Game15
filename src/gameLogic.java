@@ -46,25 +46,24 @@ public class gameLogic {
             tiles[clicked].setText(sEmpty);
             tiles[empty].setText(sClicked);
         }
-
     }
 
     //Logik för vinst
 
-    public void win(JButton[] tiles, List<Integer> numberList){
+    public void checkWin(JButton[] tiles){
         boolean correct = true;
         for (int i = 0; i<16; ++i) {
-            System.out.println(tiles[i].getText());
             if (!tiles[i].getText().equals((i+1)+"")){
+                System.out.println(i);
                 if(i == 15 && tiles[i].getText().equals("")){
                     continue;
                 }
                 correct = false;
             }
-
         }
         if (correct){
             JOptionPane.showMessageDialog(null, "Grattis, du vann!");
+            System.out.println("in win");
         }
     }
 }
