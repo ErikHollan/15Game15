@@ -21,6 +21,7 @@ public class Board extends JFrame {
 
         //upper
         add(upper, BorderLayout.NORTH);
+        upper.add(t.counter);
         upper.add(t.play);
         upper.add(t.cheat);
         upper.setBackground(Color.ORANGE);
@@ -29,10 +30,8 @@ public class Board extends JFrame {
         add(lower, BorderLayout.CENTER);
         lower.setLayout(new GridLayout(4, 4));
         lower.setBorder(border);
-        lower.setBackground(Color.cyan);
         for (int i = 0; i < t.tiles.length; i++) {
             lower.add(t.tiles[i]);
-
         }
     }
 }

@@ -1,13 +1,21 @@
 import org.w3c.dom.ls.LSOutput;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class gameLogic {
+    int countClicks=0;
 
-    //TEXT
-
+    public void counter(Object src, JButton[] tiles, JButton counter) {
+        for (int i = 0; i < tiles.length; i++) {
+            if (src == tiles[i]) {
+                countClicks++;
+            }
+        }
+        counter.setText("" + countClicks);
+    }
 
     public void cheat(JButton[] tiles, List<Integer> numberList) {
         for (int i = 1; i <= 15; i++) {
@@ -30,7 +38,7 @@ public class gameLogic {
         for (int i = 0; i < 15; i++) {
             tiles[i].setText("" + numberList.get(i));
         }
-
+        countClicks=0;
     }
 
     public void move(JButton[] tiles, Object src, int clicked, int empty, String sClicked, String sEmpty) {
@@ -54,7 +62,7 @@ public class gameLogic {
 
     //Logik för vinst
 
-    public void checkWin(JButton[] tiles){
+    public void checkWin(JButton[] tiles, Object src, JButton cheat){
         boolean correct = true;
         for (int i = 0; i<16; ++i) {
             if (!tiles[i].getText().equals((i+1)+"")){
@@ -65,7 +73,9 @@ public class gameLogic {
             }
         }
         if (correct){
-            JOptionPane.showMessageDialog(null, "Grattis, du vann!");
+            JOptionPane.showMessageDialog(null, "Grattis, du klarade spelet på " + (countClicks+1)  + " drag!");
+            if(src!=cheat)
+            countClicks=-1;
         }
     }
 }

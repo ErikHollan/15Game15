@@ -13,6 +13,7 @@ public class Tile {
     JButton play = new JButton("Nytt spel");
     JButton cheat = new JButton("Fuska");
     gameLogic gameLogic = new gameLogic();
+    JButton counter = new JButton("" + gameLogic.countClicks);
 
     public Tile() {
         for (int i = 0; i <= 15; i++) {
@@ -29,6 +30,13 @@ public class Tile {
                 tiles[i].addActionListener(click);
             }
         }
+
+        counter.setAlignmentX(1);
+        counter.setAlignmentY(1);
+        counter.setBackground(Color.WHITE);
+        counter.setForeground(Color.black);
+        counter.setFont((new Font("Serif", Font.BOLD, 12)));
+
         play.addActionListener(click);
         cheat.addActionListener(click);
     }
@@ -52,7 +60,8 @@ public class Tile {
             }
 
             gameLogic.move(tiles,src, clicked,empty,sClicked,sEmpty);
-            gameLogic.checkWin(tiles);
+            gameLogic.checkWin(tiles, src, cheat);
+            gameLogic.counter(src, tiles, counter);
 
         }
     };
