@@ -54,7 +54,6 @@ public class gameLogic {
         boolean correct = true;
         for (int i = 0; i<16; ++i) {
             if (!tiles[i].getText().equals((i+1)+"")){
-                System.out.println(i);
                 if(i == 15 && tiles[i].getText().equals("")){
                     continue;
                 }
@@ -63,7 +62,6 @@ public class gameLogic {
         }
         if (correct){
             JOptionPane.showMessageDialog(null, "Grattis, du vann!");
-            System.out.println("in win");
         }
     }
 }

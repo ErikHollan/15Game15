@@ -28,9 +28,9 @@ public class Tile {
                 tiles[i].setFont(new Font("Serif", Font.PLAIN, 50));
                 tiles[i].addActionListener(click);
             }
-            play.addActionListener(click);
-            cheat.addActionListener(click);
         }
+        play.addActionListener(click);
+        cheat.addActionListener(click);
     }
 
     ActionListener click = new ActionListener() {
@@ -52,8 +52,9 @@ public class Tile {
             }
 
             gameLogic.move(tiles,src, clicked,empty,sClicked,sEmpty);
-            gameLogic.checkWin(tiles);
-
+            if (src !=cheat || src != play){
+                gameLogic.checkWin(tiles);
+            }
         }
     };
 }
