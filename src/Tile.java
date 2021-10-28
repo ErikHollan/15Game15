@@ -52,9 +52,8 @@ public class Tile {
             }
 
             gameLogic.move(tiles,src, clicked,empty,sClicked,sEmpty);
-            if (src !=cheat || src != play){
-                gameLogic.checkWin(tiles);
-            }
+            gameLogic.checkWin(tiles);
+
         }
     };
 }
