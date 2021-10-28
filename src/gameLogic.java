@@ -1,10 +1,18 @@
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class gameLogic {
     int countClicks=0;
+
+
+    Clock time = new Clock();
+    TimeThread timeThread;
+
+    public gameLogic(TimeThread tt){
+        time.timeStart();
+        timeThread = tt;
+    }
 
     public void counter(Object src, JButton[] tiles, JButton counter) {
         for (int i = 0; i < tiles.length; i++) {
@@ -13,13 +21,6 @@ public class gameLogic {
             }
         }
         counter.setText("" + countClicks);
-    }
-    Clock time = new Clock();
-    TimeThread timeThread;
-
-    public gameLogic(TimeThread tt){
-        time.timeStart();
-        timeThread = tt;
     }
 
     public void cheat(JButton[] tiles, List<Integer> numberList) {
@@ -68,8 +69,6 @@ public class gameLogic {
         }
     }
 
-    //Logik för vinst
-
     public void checkWin(JButton[] tiles, Object src, JButton cheat){
         boolean correct = true;
         for (int i = 0; i<16; ++i) {
@@ -81,11 +80,11 @@ public class gameLogic {
             }
         }
         if (correct){
-            JOptionPane.showMessageDialog(null, "Grattis, du klarade spelet på " + (countClicks+1)  + " drag!");
-            if(src!=cheat)
-            countClicks=-1;
+            if(src==cheat) {
+                countClicks -= 1;
+            }
             timeThread.setPause(true);
-            JOptionPane.showMessageDialog(null, "You did it in " + time.elapsedTime() + " seconds.");
+            JOptionPane.showMessageDialog(null, "Grattis, du klarade spelet på " + (countClicks+1)  + " drag, \noch " + time.elapsedTime() + " sekunder.");
         }
     }
 }

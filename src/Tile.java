@@ -12,12 +12,14 @@ public class Tile {
     Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     JButton play = new JButton("Nytt spel");
     JButton cheat = new JButton("Fuska");
-    JButton counter = new JButton("" + gameLogic.countClicks);
+    JButton counter;
     gameLogic gameLogic;
+
 
 
     public Tile(TimeThread tt) {
         gameLogic = new gameLogic(tt);
+        counter = new JButton("" + gameLogic.countClicks);
         for (int i = 0; i <= 15; i++) {
             if (i < 15) {
                 numberList.add(i + 1);
@@ -46,7 +48,6 @@ public class Tile {
 
         play.addActionListener(click);
         cheat.addActionListener(click);
-        JOptionPane.showMessageDialog(null, "Tryck OK för att starta");
     }
 
     ActionListener click = new ActionListener() {

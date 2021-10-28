@@ -25,8 +25,8 @@ public class TimeThread extends Thread{
             if(pause)
                 continue;
             try {
-                Thread.sleep(1000);
                 label.setText(clock.elapsedTime());
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
