@@ -51,8 +51,6 @@ public class Tile {
             }
 
             gameLogic.move(tiles,src, clicked,empty,sClicked,sEmpty);
-
         }
-
     };
 }

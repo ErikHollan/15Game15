@@ -33,6 +33,5 @@ public class Board extends JFrame {
             lower.add(t.tiles[i]);
 
         }
-
     }
 }

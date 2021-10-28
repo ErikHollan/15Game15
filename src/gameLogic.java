@@ -26,7 +26,6 @@ public class gameLogic {
         for (int i = 0; i < 15; i++) {
             tiles[i].setText("" + numberList.get(i));
         }
-
     }
 
     public void move(JButton[] tiles, Object src, int clicked, int empty, String sClicked, String sEmpty) {
@@ -38,7 +37,6 @@ public class gameLogic {
             if (tiles[i].getText().equals("")) {
                 empty = i;
             }
-
         }
         if (clicked + 1 == empty || clicked - 1 == empty ||
                 clicked + 4 == empty || clicked - 4 == empty) {
@@ -47,9 +45,8 @@ public class gameLogic {
 
             tiles[clicked].setText(sEmpty);
             tiles[empty].setText(sClicked);
-
         }
-
     }
 }
+
 
