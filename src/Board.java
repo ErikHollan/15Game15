@@ -17,11 +17,13 @@ public class Board extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         Tile t = new Tile();
+        Clock time = new Clock();
 
         //upper
         add(upper, BorderLayout.NORTH);
         upper.add(t.play);
         upper.add(t.cheat);
+        upper.add(new JLabel(time.elapsedTime(time.timeStart(), time.timeEnd())));
         upper.setBackground(Color.ORANGE);
 
         //lower

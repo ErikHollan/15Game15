@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.Instant;
 
 public class Clock {
@@ -10,5 +11,10 @@ public class Clock {
     public Instant timeEnd(){
         Instant end = Instant.now();
         return end;
+    }
+
+    public String elapsedTime(Instant start, Instant end){
+        String elapsed = Duration.between(start, end).toString();
+        return elapsed;
     }
 }
