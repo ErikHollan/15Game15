@@ -20,14 +20,19 @@ public class Tile {
             if (i < 15) {
                 numberList.add(i + 1);
                 tiles[i] = new JButton("" + numberList.get(i));
+                tiles[i].setBackground(Color.WHITE);
+                tiles[i].setForeground(Color.black);
                 tiles[i].setBorder(border);
                 tiles[i].setFont(new Font("Serif", Font.PLAIN, 50));
                 tiles[i].addActionListener(click);
             } else {
                 tiles[i] = new JButton("");
+                tiles[i].setBackground(Color.WHITE);
+                tiles[i].setForeground(Color.black);
                 tiles[i].setBorder(border);
                 tiles[i].setFont(new Font("Serif", Font.PLAIN, 50));
                 tiles[i].addActionListener(click);
+
             }
         }
 
