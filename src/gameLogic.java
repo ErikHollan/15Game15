@@ -1,5 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +13,13 @@ public class gameLogic {
             }
         }
         counter.setText("" + countClicks);
+    }
+    Clock time = new Clock();
+    TimeThread timeThread;
+
+    public gameLogic(TimeThread tt){
+        time.timeStart();
+        timeThread = tt;
     }
 
     public void cheat(JButton[] tiles, List<Integer> numberList) {
@@ -39,6 +44,9 @@ public class gameLogic {
             tiles[i].setText("" + numberList.get(i));
         }
         countClicks=0;
+        time.timeStart();
+        timeThread.prepareClock();
+        timeThread.setPause(false);
     }
 
     public void move(JButton[] tiles, Object src, int clicked, int empty, String sClicked, String sEmpty) {
@@ -76,6 +84,8 @@ public class gameLogic {
             JOptionPane.showMessageDialog(null, "Grattis, du klarade spelet på " + (countClicks+1)  + " drag!");
             if(src!=cheat)
             countClicks=-1;
+            timeThread.setPause(true);
+            JOptionPane.showMessageDialog(null, "You did it in " + time.elapsedTime() + " seconds.");
         }
     }
 }
