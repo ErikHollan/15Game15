@@ -11,11 +11,9 @@ public class Tile {
     ArrayList<Integer> numberList = new ArrayList<>();
     Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     JButton play = new JButton("Nytt spel");
-    JButton cheat = new JButton("Fuska");
+    JButton cheat = new JButton("Reset");
     JButton counter;
     gameLogic gameLogic;
-
-
 
     public Tile(TimeThread tt) {
         gameLogic = new gameLogic(tt);
@@ -40,11 +38,6 @@ public class Tile {
             }
         }
 
-        counter.setAlignmentX(1);
-        counter.setAlignmentY(1);
-        counter.setBackground(Color.WHITE);
-        counter.setForeground(Color.black);
-        counter.setFont((new Font("Serif", Font.BOLD, 12)));
 
         play.addActionListener(click);
         cheat.addActionListener(click);

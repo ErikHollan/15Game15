@@ -3,13 +3,13 @@ import javax.swing.*;
 public class TimeThread extends Thread{
 
     Clock clock;
-    JLabel label;
+    JButton clockButton;
     boolean running = true;
     boolean pause = false;
 
-    public TimeThread(Clock clock, JLabel label){
+    public TimeThread(Clock clock, JButton button){
         this.clock = clock;
-        this.label = label;
+        this.clockButton = button;
     }
 
     public void prepareClock(){
@@ -25,7 +25,7 @@ public class TimeThread extends Thread{
             if(pause)
                 continue;
             try {
-                label.setText(clock.elapsedTime());
+                clockButton.setText(clock.elapsedTime());
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
