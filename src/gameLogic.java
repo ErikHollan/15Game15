@@ -3,9 +3,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class gameLogic {
+
+
     int countClicks=0;
-
-
     Clock time = new Clock();
     TimeThread timeThread;
 
@@ -47,7 +47,7 @@ public class gameLogic {
         countClicks=0;
         time.timeStart();
         timeThread.prepareClock();
-        timeThread.setPause(false);
+        timeThread.unPause();
     }
 
     public void move(JButton[] tiles, Object src, int clicked, int empty, String sClicked, String sEmpty) {
@@ -83,7 +83,7 @@ public class gameLogic {
             if(src==cheat) {
                 countClicks -= 1;
             }
-            timeThread.setPause(true);
+            timeThread.pause();
             JOptionPane.showMessageDialog(null, "Grattis, du klarade spelet på " + (countClicks+1)  + " drag, \noch " + time.elapsedTime() + " sekunder.");
         }
     }
