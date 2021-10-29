@@ -16,13 +16,21 @@ public class TimeThread extends Thread{
         clock.timeStart();
     }
 
-    public void setPause(boolean p){
-        this.pause = p;
+    public synchronized void pause(){
+        pause = true;
+    }
+
+    public synchronized void unPause(){
+        pause = false;
+    }
+
+    public synchronized boolean getPause(){
+        return pause;
     }
 
     public void run() {
         while (running) {
-            if(pause)
+            if(getPause())
                 continue;
             try {
                 clockButton.setText(clock.elapsedTime());
